@@ -1,0 +1,6 @@
+{
+  "name": "Techno Quiz - Master Console & Live Buzzer System",
+  "description": "Standalone desktop & multi-laptop quizmaster console with real-time linked buzzers, live game tracking table, and local LLM backend integration.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

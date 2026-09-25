@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b2545"/>
+      <stop offset="100%" stop-color="#040d1a"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f0cf5a"/>
+      <stop offset="100%" stop-color="#d4af37"/>
+    </linearGradient>
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#12a3a1"/>
+      <stop offset="100%" stop-color="#0e7c7b"/>
+    </linearGradient>
+  </defs>
+  <!-- Background rounded squircle -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)"/>
+  <rect x="16" y="16" width="480" height="480" rx="96" fill="none" stroke="url(#goldGrad)" stroke-width="8" opacity="0.6"/>
+  
+  <!-- Outer Glow Ring for buzzer -->
+  <circle cx="256" cy="256" r="160" fill="none" stroke="url(#tealGrad)" stroke-width="12" opacity="0.3"/>
+  
+  <!-- Trophy / Buzzer Symbol -->
+  <!-- Trophy Cup -->
+  <path d="M168 140 H344 V232 C344 280 304 316 256 316 C208 316 168 280 168 232 Z" fill="url(#goldGrad)"/>
+  <!-- Handles -->
+  <path d="M168 160 H136 C116 160 100 176 100 196 C100 236 132 252 168 252" fill="none" stroke="url(#goldGrad)" stroke-width="20" stroke-linecap="round"/>
+  <path d="M344 160 H376 C396 160 412 176 412 196 C412 236 380 252 344 252" fill="none" stroke="url(#goldGrad)" stroke-width="20" stroke-linecap="round"/>
+  <!-- Stem & Base -->
+  <rect x="236" y="316" width="40" height="48" fill="url(#goldGrad)"/>
+  <rect x="176" y="364" width="160" height="32" rx="10" fill="url(#goldGrad)"/>
+  
+  <!-- Lightning bolt / Buzzer Zap in center -->
+  <polygon points="264,164 236,220 260,220 248,272 284,212 258,212" fill="#0b2545"/>
+</svg>
