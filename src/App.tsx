@@ -28,6 +28,7 @@ import {
   RotateCcw,
   Trophy,
   Laptop,
+  QrCode,
 } from 'lucide-react';
 
 interface Team {
@@ -677,11 +678,12 @@ export default function App() {
         </div>
       )}
 
-      {/* Connect & Link Laptops Modal */}
+      {/* Connect & Link Laptops / Phones Modal */}
       <ConnectModal
         isOpen={showConnectModal}
         onClose={() => setShowConnectModal(false)}
         teams={teams}
+        connectedClients={clients}
       />
 
       <div className="wrap" id="hostRoot">
@@ -706,13 +708,13 @@ export default function App() {
               <span>{muted ? <VolumeX size={15} /> : <Volume2 size={15} />} Sound</span>
             </label>
 
-            {/* Link other laptops modal */}
+            {/* Link phones & laptops via QR modal */}
             <button
               onClick={() => setShowConnectModal(true)}
-              className="btn teal small"
-              title="Connect other laptops & buzzers on LAN"
+              className="btn gold small"
+              title="Show Phone QR codes for all teams"
             >
-              <Wifi size={14} /> Connect Laptops
+              <QrCode size={14} /> Phone QR Connect
             </button>
 
             {/* PWA Install Button (Standalone Desktop App) */}
@@ -1359,6 +1361,7 @@ export default function App() {
             onToggleIndividualLock={handleToggleIndividualLock}
             onToggleFinalist={handleToggleFinalist}
             onSelectBuzzer={handleSelectBuzzer}
+            onOpenQr={() => setShowConnectModal(true)}
           />
         )}
 

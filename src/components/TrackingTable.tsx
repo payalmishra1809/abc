@@ -1,5 +1,5 @@
 import React from 'react';
-import { Volume2, Lock, Unlock, ShieldAlert, CheckCircle2, RotateCcw, Download } from 'lucide-react';
+import { Volume2, Lock, Unlock, ShieldAlert, CheckCircle2, RotateCcw, Download, QrCode } from 'lucide-react';
 
 interface Team {
   name: string;
@@ -55,6 +55,7 @@ interface TrackingTableProps {
   onToggleIndividualLock: (team: number, currentLocked: boolean) => void;
   onToggleFinalist: (team: number) => void;
   onSelectBuzzer: (team: number) => void;
+  onOpenQr?: (team?: number) => void;
 }
 
 export const TrackingTable: React.FC<TrackingTableProps> = ({
@@ -73,6 +74,7 @@ export const TrackingTable: React.FC<TrackingTableProps> = ({
   onToggleIndividualLock,
   onToggleFinalist,
   onSelectBuzzer,
+  onOpenQr,
 }) => {
   // Map connected devices by team index
   const teamClientsMap = new Map<number, ConnectedClient[]>();
@@ -123,6 +125,11 @@ export const TrackingTable: React.FC<TrackingTableProps> = ({
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
+          {onOpenQr && (
+            <button onClick={() => onOpenQr()} className="btn gold small" title="Show Phone QR codes">
+              <QrCode size={14} /> Phone QR Connect
+            </button>
+          )}
           {buzzLocked ? (
             <button onClick={onUnlockAll} className="btn teal small">
               <Unlock size={14} /> Unlock All Buzzers
@@ -318,6 +325,18 @@ export const TrackingTable: React.FC<TrackingTableProps> = ({
                       >
                         <Volume2 size={12} />
                       </button>
+
+                      {/* Phone QR button for this team */}
+                      {onOpenQr && (
+                        <button
+                          onClick={() => onOpenQr(idx)}
+                          className="btn small gold"
+                          style={{ padding: '4px 7px', fontSize: '11px' }}
+                          title={`Show phone QR code for ${team.name}`}
+                        >
+                          <QrCode size={12} /> QR
+                        </button>
+                      )}
                     </div>
                   </td>
                 </tr>
