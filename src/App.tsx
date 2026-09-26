@@ -629,11 +629,11 @@ export default function App() {
           setCurrentTeamIdx(newTeam);
           sendWs({ type: 'join', role: 'buzzer', team: newTeam });
         }}
+        onRenameTeam={handleRenameTeam}
         muted={muted}
         onToggleMute={setMuted}
         onBuzz={handleParticipantBuzz}
         hasBuzzed={hasBuzzed}
-        onReturnToHost={() => setRole('host')}
       />
     );
   }

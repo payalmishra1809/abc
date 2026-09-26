@@ -1,4 +1,5 @@
 import express from 'express';
+import fs from 'fs';
 import http from 'http';
 import os from 'os';
 import path from 'path';
@@ -430,7 +431,7 @@ app.get('/api/network-info', (req, res) => {
     }
   }
 
-  const port = 3000;
+  const port = PORT;
   res.json({
     ips,
     port,
@@ -586,9 +587,14 @@ async function setupVite() {
     });
     app.use(vite.middlewares);
   } else {
-    app.use(express.static(path.join(__dirname, 'dist')));
+    // Serve static client bundle from dist
+    const distPath = path.resolve(__dirname, 'dist');
+    const fallbackPath = path.resolve(__dirname, '../dist');
+    const staticDir = fs.existsSync(distPath) ? distPath : fallbackPath;
+
+    app.use(express.static(staticDir));
     app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+      res.sendFile(path.join(staticDir, 'index.html'));
     });
   }
 }

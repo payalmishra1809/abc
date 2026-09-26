@@ -21,13 +21,21 @@ Here are the fastest, free/low-cost deployment options:
 
 ---
 
-## Option 2: Railway.app
+## Option 2: Railway.app (Automatic Nixpacks / Docker)
 
 1. Go to [railway.app](https://railway.app) and log in with GitHub.
 2. Click **New Project** → **Deploy from GitHub repo**.
 3. Choose your repository.
-4. Railway will automatically detect Node.js and run `npm run build` and `npm start`.
-5. Under service settings, click **Generate Domain**. You now have a live public link with WebSocket support.
+4. Railway will automatically use the included `railway.toml` or `Dockerfile`:
+   - **Build Command:** `npm run build`
+   - **Start Command:** `npm start`
+5. Go to **Settings** → **Networking** → Click **Generate Domain**.
+6. Railway automatically routes HTTPS and WebSockets to your application.
+
+### Fixing Railway Build / Start Errors:
+- **Port:** Railway automatically sets the `PORT` environment variable. The server now dynamically listens to `process.env.PORT`.
+- **Start Command:** Uses `npm start` (`node dist/server.js`), which runs native Node with zero tsx dev-dependency conflicts.
+- **Healthcheck:** Preconfigured in `railway.toml` pointing to `/api/game/state`.
 
 ---
 

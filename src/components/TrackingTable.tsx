@@ -326,13 +326,13 @@ export const TrackingTable: React.FC<TrackingTableProps> = ({
                         <Volume2 size={12} />
                       </button>
 
-                      {/* Phone QR button for this team */}
+                      {/* Phone QR button */}
                       {onOpenQr && (
                         <button
-                          onClick={() => onOpenQr(idx)}
+                          onClick={() => onOpenQr()}
                           className="btn small gold"
                           style={{ padding: '4px 7px', fontSize: '11px' }}
-                          title={`Show phone QR code for ${team.name}`}
+                          title="Show Single Phone QR Code"
                         >
                           <QrCode size={12} /> QR
                         </button>
