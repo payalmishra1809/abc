@@ -18,6 +18,7 @@ import {
 import { TrackingTable } from './components/TrackingTable';
 import { LocalLLMStudio } from './components/LocalLLMStudio';
 import { ConnectModal } from './components/ConnectModal';
+import { RuleBookModal } from './components/RuleBookModal';
 import { ParticipantView } from './components/ParticipantView';
 import { usePWAInstall } from './usePWAInstall';
 import {
@@ -29,6 +30,7 @@ import {
   Trophy,
   Laptop,
   QrCode,
+  BookOpen,
 } from 'lucide-react';
 
 interface Team {
@@ -131,6 +133,7 @@ export default function App() {
 
   // Modals & Overlays
   const [showConnectModal, setShowConnectModal] = useState(false);
+  const [showRuleBookModal, setShowRuleBookModal] = useState(false);
   const [confirmModal, setConfirmModal] = useState<{ show: boolean; msg: string; onConfirm: () => void }>({
     show: false,
     msg: '',
@@ -686,6 +689,12 @@ export default function App() {
         connectedClients={clients}
       />
 
+      {/* Official Rule Book & Competition Guidelines Modal */}
+      <RuleBookModal
+        isOpen={showRuleBookModal}
+        onClose={() => setShowRuleBookModal(false)}
+      />
+
       <div className="wrap" id="hostRoot">
         {/* Top Master Console Header */}
         <header className="top">
@@ -715,6 +724,15 @@ export default function App() {
               title="Show Phone QR codes for all teams"
             >
               <QrCode size={14} /> Phone QR Connect
+            </button>
+
+            {/* Official Rule Book Modal Button */}
+            <button
+              onClick={() => setShowRuleBookModal(true)}
+              className="btn teal small"
+              title="Open Official Rule Book (3-Page Printable Guide & Word Doc)"
+            >
+              <BookOpen size={14} /> Rule Book
             </button>
 
             {/* PWA Install Button (Standalone Desktop App) */}

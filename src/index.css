@@ -1168,3 +1168,34 @@ select.teamsel {
   color: var(--gold-2);
   font-weight: 900;
 }
+
+/* Print Styles for Rule Book */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+  .wrap, #participantRoot, #celebrate-overlay, #wrong-flash, #confetti-canvas {
+    display: none !important;
+  }
+  .modal-overlay {
+    position: static !important;
+    background: transparent !important;
+    padding: 0 !important;
+  }
+  .modal-box {
+    max-width: 100% !important;
+    box-shadow: none !important;
+    border: none !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    padding: 0 !important;
+  }
+  .modal-box button, .btn {
+    display: none !important;
+  }
+  .page-break {
+    page-break-after: always;
+  }
+}
+
